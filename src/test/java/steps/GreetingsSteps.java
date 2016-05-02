@@ -1,29 +1,39 @@
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import net.thucydides.core.annotations.Steps;
+import steps.serenity.TechSteps;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 /**
  * Created by alex on 02.05.16.
  */
 public class GreetingsSteps {
+
+    @Steps
+    TechSteps techSteps;
+
     @Given("^time of the day: \"([^\"]*)\"$")
     public void timeOfTheDay(String timeString) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        techSteps.setTime(timeString);
     }
 
     @When("^program run$")
     public void programRun() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        techSteps.run();
     }
 
     @Then("^we have \"([^\"]*)\"$")
     public void weHave(String greetingMessage) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        assertThat(techSteps.getGreeting(), is(greetingMessage));
     }
+
+
 }
