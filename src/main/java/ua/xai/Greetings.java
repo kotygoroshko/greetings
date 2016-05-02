@@ -31,4 +31,8 @@ public class Greetings {
     public void setTime(String time) {
         this.time = LocalTime.parse(time);
     }
+
+    public void setLanguage(String language) {
+        ;
+    }
 }
