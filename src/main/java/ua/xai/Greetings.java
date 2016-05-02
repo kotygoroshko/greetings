@@ -1,6 +1,8 @@
 package ua.xai;
 
 import java.time.LocalTime;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * Created by alex on 02.05.16.
@@ -8,18 +10,19 @@ import java.time.LocalTime;
 public class Greetings {
 
     private LocalTime time;
+    private ResourceBundle messages;
 
     public String getGreeting() {
         if (time.isBefore(LocalTime.parse("06:00"))) {
-            return "Good night, World!";
+            return messages.getString("night");
         } else if (time.isBefore(LocalTime.parse("09:00"))) {
-            return "Good morning, World!";
+            return messages.getString("morning");
         } else if (time.isBefore(LocalTime.parse("19:00"))) {
-            return "Good day, World!";
+            return messages.getString("day");
         } else if (time.isBefore(LocalTime.parse("23:00"))) {
-            return "Good evening, World!";
+            return messages.getString("evening");
         } else {
-            return "Good night, World!";
+            return messages.getString("night");
         }
     }
 
@@ -33,6 +36,7 @@ public class Greetings {
     }
 
     public void setLanguage(String language) {
-        ;
+        Locale currentLocale = new Locale(language);
+        messages = ResourceBundle.getBundle("Greetings", currentLocale);
     }
 }
