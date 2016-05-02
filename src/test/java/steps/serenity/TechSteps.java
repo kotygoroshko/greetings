@@ -23,4 +23,8 @@ public class TechSteps {
     public String getGreeting() {
         return greetings.getGreeting();
     }
+
+    public void setLanguage(String language) {
+        greetings.setLanguage(language);
+    }
 }
